@@ -70,20 +70,23 @@ class Car
 
 
 
-class chasis extends car
+class chasis extends Car
 {
+
 var $id;
 var $total_flaws;
+var $chasis_year;
 
-function __construct($id,$brand,$model,$date)
+function __construct($id,$brand,$model,$tflaws)
 {
   $this->brand = $brand;
   $this->model = $model;
   $this->id = $id;  
-  $this->total_flaws =  $date;
+  $this->total_flaws =  $tflaws;
+  $this->chasis_year = $chasis_year;
 }
 
-function set_make_date($tflaws) {
+function set_tflaws($tflaws) {
     $this->total_flaws = $tflaws;
 }
 
@@ -91,13 +94,21 @@ function set_id($id){
     $this->id = $id;
 }
 
+function set_chasis_year($chasis_year) {
+    $this->chasis_year = $chasis_year;
+}
+
 function get_id()
 {
     return $this->id; 
 }
 
-function get_make_date() {
+function get_flaws() {
     return $this->total_flaws;
+}
+
+function get_chasis_year() {
+    return $this->chasis_year;
 }
 
 function check_flaws() {
@@ -108,9 +119,70 @@ function check_flaws() {
     }
     else{
         echo("Chasis is Oporational");
-        $this->safe_to_use = True;
+        $this->safe_to_use = true;
     }
 
 }
 
+function check_chasis_age() {
+    if ($this->chasis_year >= 10){
+        echo("Chasis too Old.");
+        $this->safe_to_use = false;}
+    
+    else {
+        $this->safe_to_use = true;
+        echo("Chasis Age Legal");
+    }
 }
+
+}
+
+
+
+class tires extends Car
+{
+    var $expireyear;
+    var $tirecompany;
+
+    function __construct($tirecompany,$expiredate,$brand,$model){
+        $this->brand = $brand;
+        $this ->model = $model;
+        $this ->tirecompany = $tirecompany;
+        $this -> expireyear = $expireyear;
+    }
+
+    function set_tirecompany($tirecompany) {
+        $this->tirecompany = $tirecompany;
+    }
+    
+    function set_expireyear($expireyear){
+        $this->expireyear = $expireyear;
+    }
+    
+    function get_expireyear()
+    {
+        return $this->expireyear; 
+    }
+    
+    function get_tirecompany() {
+        return $this->tirecompany;
+    }
+
+    function check_tires_date($currentyear) {
+        if ($this->expireyear - $currentyear >= 7) {
+            $this->safe_to_use = false;
+            echo("Tires are Not Safe to Use");
+        }
+        else {
+            $this->safe_to_use = true;
+            echo("Tires are Safe to Use");
+        }
+    }
+
+    function extend_expiredate() {
+        $this->expireyear+= 5;
+        echo("Tires Gained a 5 Year Extra for Warrenty after Touchup.");
+    }
+}
+
+?>
