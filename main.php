@@ -144,7 +144,7 @@ class tires extends Car
     var $expireyear;
     var $tirecompany;
 
-    function __construct($tirecompany,$expiredate,$brand,$model){
+    function __construct($tirecompany,$expireyear,$brand,$model){
         $this->brand = $brand;
         $this ->model = $model;
         $this ->tirecompany = $tirecompany;
