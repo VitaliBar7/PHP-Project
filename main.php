@@ -77,7 +77,7 @@ var $id;
 var $total_flaws;
 var $chasis_year;
 
-function __construct($id,$brand,$model,$tflaws)
+function __construct($id,$brand,$model,$tflaws,$chasis_year)
 {
   $this->brand = $brand;
   $this->model = $model;
