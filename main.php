@@ -39,6 +39,10 @@ class Car
         return $this->safety_rating;
     }
 
+    function get_safe_to_use(){
+        return $this ->safe_to_use;
+    }
+
     function set_brand($brand)
     {
         $this->brand = $brand;
@@ -70,17 +74,21 @@ class Car
 
 
 
-class chasis extends Car
+class Chasis extends Car
 {
 
 var $id;
 var $total_flaws;
 var $chasis_year;
 
-function __construct($id,$brand,$model,$tflaws,$chasis_year)
+function __construct($id,$tflaws,$chasis_year, Car $car)
 {
-  $this->brand = $brand;
-  $this->model = $model;
+  $this -> brand = $car -> get_brand();
+  $this -> engine_volume = $car -> get_engine_volume();
+  $this -> year = $car -> get_year();
+  $this -> safe_to_use = $car -> get_safe_to_use();
+  $this ->model = $car -> get_model();
+  $this ->safety_rating = $car -> get_safety_rating();
   $this->id = $id;  
   $this->total_flaws =  $tflaws;
   $this->chasis_year = $chasis_year;
@@ -124,8 +132,8 @@ function check_flaws() {
 
 }
 
-function check_chasis_age() {
-    if ($this->chasis_year >= 10){
+function check_chasis_age($curryr) {
+    if (( $curryr - $this->chasis_year) >= 10){
         echo("Chasis too Old.");
         $this->safe_to_use = false;}
     
@@ -139,16 +147,22 @@ function check_chasis_age() {
 
 
 
-class tires extends Car
+class Tires extends Car
 {
     var $expireyear;
     var $tirecompany;
 
-    function __construct($tirecompany,$expireyear,$brand,$model){
-        $this->brand = $brand;
-        $this ->model = $model;
+    function __construct($tirecompany,$expireyear, Car $car){
+
+        $this -> brand = $car -> get_brand();
+        $this -> engine_volume = $car -> get_engine_volume();
+        $this -> year = $car -> get_year();
+        $this -> safe_to_use = $car -> get_safe_to_use();
+        $this -> model = $car -> get_model();
+        $this ->safety_rating = $car -> get_safety_rating();
         $this ->tirecompany = $tirecompany;
         $this -> expireyear = $expireyear;
+
     }
 
     function set_tirecompany($tirecompany) {
@@ -169,12 +183,12 @@ class tires extends Car
     }
 
     function check_tires_date($currentyear) {
-        if ($this->expireyear - $currentyear >= 7) {
+        if ($this->get_expireyear() <= $currentyear) {
             $this->safe_to_use = false;
             echo("Tires are Not Safe to Use");
         }
         else {
-            $this->safe_to_use = true;
+            $this->safe_to_use = false;
             echo("Tires are Safe to Use");
         }
     }
@@ -184,5 +198,126 @@ class tires extends Car
         echo("Tires Gained a 5 Year Extra for Warrenty after Touchup.");
     }
 }
+
+
+class Brakes extends Car
+{
+    var $requireInspection;
+    var $yearsActive;
+    var $brakeRating;
+
+    function __construct($requireInspection,$yearsActive,$brakeRating,Car $car)
+    {
+        $this -> brand = $car -> get_brand();
+        $this -> engine_volume = $car -> get_engine_volume();
+        $this -> year = $car -> get_year();
+        $this -> safe_to_use = $car -> get_safe_to_use();
+        $this -> model = $car -> get_model();
+        $this -> safety_rating = $car -> get_safety_rating();
+        $this -> requireInspection = $requireInspection;
+        $this -> yearsActive = $yearsActive;
+        $this -> brakeRating = $brakeRating;
+    }
+
+    function set_requitreInspection($reqIns) {
+        $this->requireInspection = $reqIns;
+    }
+    
+    function set_YearsActive($yrsActv){
+        $this->yearsActive = $yrsActv;
+    }
+
+    function set_brakeRating($brkRtng){
+        $this->brakeRating = $brkRtng;
+    }
+    
+    function get_reqInspection()
+    {
+        return $this->requireInspection; 
+    }
+    
+    function get_yrsActiv() {
+        return $this->yearsActive;
+    }
+
+    function get_brkRtng() {
+        return $this->brakeRating;
+    }
+
+    function testBrakes(){
+        if ($this-> get_brkRtng() < 50) {
+            $this -> get_reqInspection(true);
+        }
+    }
+
+    function replaceBrakes(){
+        if($this->get_reqInspection() == true){
+            $this->set_YearsActive(0);}
+        else {
+            echo"The Following Car Do Not Require Brake Replacment";
+        }
+        }
+    }
+
+
+
+$C1 =  new Car('Ford', 'Focus' ,1.6 , 2021 , 5 , true);
+
+$C2 = new Car('Mazda' , 'CX-3' , 2000 , 2022 , 4 , true);
+
+$C3 = new Car('Chevrolet', 'Malibu' , 2.5 , 2025 , 5 , true);
+
+$C4 = new Car('Suzuki' , 'Cross' , 1.6 , 2021 , 3 , true);
+
+$CASC1 = new Chasis('4FRF771', 3 , 2009 , $C1);
+
+$CASC2 = new Chasis('6MZE1299', 0 , 2022 , $C2);
+
+$TIRC1 = new Tires ('Michlin', 2028 , $C1);
+
+$TIRC2 = new Tires ('Toyo', 2023 , $C2);
+
+$BRC3 = new Brakes (false, 3 , 67 , $C3);
+
+$BRC4 = new Brakes (true, 5 , 49 , $C4);
+
+
+print_r($CASC1); //Chasis Class 1 Obj
+
+//print ($CASC1->check_chasis_age(2024)); //Chasis Function Demo
+
+print("<br>");
+
+print("<br>");
+
+print_r($CASC2); //Chasis Class 2 Obj
+
+print("<br>");
+
+print("<br>");
+
+print_r($TIRC1); //Tires Class 1 Obj
+
+print("<br>");
+
+print("<br>");
+
+print_r($TIRC2); //Tires Class 2 Obj
+
+//print($TIRC2->check_tires_date(2024)); //Tires Function Demo
+
+print("<br>");
+
+print("<br>");
+
+print_r($BRC3); //Brake Class 1 Obj
+
+print("<br>");
+
+print("<br>");
+
+print_r($BRC4); //Brake Class 2 Obj
+
+
 
 ?>
