@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title</title>
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #121212; 
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+
+
+      .form-container {
+        background: #1e1e1e; /* צבע רקע כהה */
+        padding: 25px;
+        border-radius: 12px;
+        width: 320px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .form-container h2 {
+        color: #ffffff;
+        margin-bottom: 15px;
+        font-size: 22px;
+      }
+
+
+      .form-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        background: #292929;
+        color: #fff;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+
+      .form-container input:focus {
+        background: #333;
+      }
+
+
+      .form-container button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: #007aff;
+        color: white;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+
+      .form-container button:hover {
+        background: #005ecb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Form weapons</h2>
+      <form action="db_weapon.php" method="POST">
+        <input type="text" name="name_weapon" placeholder="name" required />
+        <input type="text" name="damage_weapon" placeholder="damage" required />
+        <input type="text" name="rarity_weapon" placeholder="rarity" required />
+        <input type="text" name="type_id_weapon" placeholder="type_id" required />
+        <button type="submit">Send</button>
+        <br>
+        <br>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+    <br>
+    <br>
+    <div class="form-container">
+        <h2>Form weapon_abilities</h2>
+        <form action="db_weapon.php" method="POST">
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <button type="submit">Send</button>
+          <br>
+          <br>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+      <br>
+    <br>
+    <div class="form-container">
+        <h2>Form weapon_skins</h2>
+        <form action="db_weapon.php" method="POST">
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <button type="submit">Send</button>
+          <br>
+          <br>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+      <br>
+    <br>
+    <div class="form-container">
+        <h2>Form weapon_types</h2>
+        <form action="db_weapon.php" method="POST">
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <button type="submit">Send</button>
+          <br>
+          <br>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+      <br>
+    <br>
+    <div class="form-container">
+        <h2>Form weapon_upgradess</h2>
+        <form action="db_weapon.php" method="POST">
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <input type="text" placeholder="" required />
+          <button type="submit">Send</button>
+          <br>
+          <br>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+  </body>
+</html>
