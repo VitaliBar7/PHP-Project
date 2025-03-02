@@ -43,6 +43,26 @@ while ($row = $result->fetch_assoc()) {
     echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
 }
 
+$result = $conn->query("SELECT * FROM weapon_abilities");
+while ($row = $result->fetch_assoc()) {
+    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+}
+
+$result = $conn->query("SELECT * FROM weapon_skins");
+while ($row = $result->fetch_assoc()) {
+    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+}
+
+$result = $conn->query("SELECT * FROM weapon_types");
+while ($row = $result->fetch_assoc()) {
+    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+}
+
+$result = $conn->query("SELECT * FROM weapon_upgrades");
+while ($row = $result->fetch_assoc()) {
+    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+}
+
 $conn->query("DELETE FROM weapon_skins WHERE id = 1");
 $conn->query("DELETE FROM weapon_abilities WHERE id = 3");
 
