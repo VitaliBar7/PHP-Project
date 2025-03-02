@@ -74,8 +74,4 @@ if (isset($_POST['upgrade_name']) && isset($_POST['bonus_damage']) && isset($_PO
     }
 }
 
-
-
-
-
 $conn->close();
