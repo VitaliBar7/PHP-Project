@@ -81,7 +81,7 @@
   </head>
   <body>
     <div class="form-container">
-      <h2>Form weapons</h2>
+      <h2>Add a Weapon</h2>
       <form action="db_weapon.php" method="POST">
         <input type="text" name="name_weapon" placeholder="name" required />
         <input type="text" name="damage_weapon" placeholder="damage" required />
@@ -96,12 +96,13 @@
     <br>
     <br>
     <div class="form-container">
-        <h2>Form weapon_abilities</h2>
+        <h2>Update a Weapon</h2>
         <form action="db_weapon.php" method="POST">
-          <input type="text" placeholder="" required />
-          <input type="text" placeholder="" required />
-          <input type="text" placeholder="" required />
-          <input type="text" placeholder="" required />
+          <input type="text" name ="name_weapon" placeholder="name" required />
+          <input type="text" name ="damage_weapon" placeholder="damage" required />
+          <input type="text" name ="rarity_weapon" placeholder="rarity" required />
+          <input type="text" name ="type_id_weapon" placeholder="type_id" required />
+          <input type="text" name ="weapon_id" placeholder="weapon_id" required />
           <button type="submit">Send</button>
           <br>
           <br>
