@@ -40,27 +40,32 @@ $conn->query("INSERT INTO weapon_abilities (id, ability_name, cooldown_seconds, 
 
 $result = $conn->query("SELECT * FROM weapons");
 while ($row = $result->fetch_assoc()) {
-    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+    print_r($row);
+    print("<hr>");;
 }
 
 $result = $conn->query("SELECT * FROM weapon_abilities");
 while ($row = $result->fetch_assoc()) {
-    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+    print_r($row);
+    print("<hr>");;
 }
 
 $result = $conn->query("SELECT * FROM weapon_skins");
 while ($row = $result->fetch_assoc()) {
-    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+    print_r($row);
+    print("<hr>");;
 }
 
 $result = $conn->query("SELECT * FROM weapon_types");
 while ($row = $result->fetch_assoc()) {
-    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+    print_r($row);
+    print("<hr>");;
 }
 
 $result = $conn->query("SELECT * FROM weapon_upgrades");
 while ($row = $result->fetch_assoc()) {
-    echo "Weapon: " . $row['name'] . " - Damage: " . $row['damage'] . "<br>";
+    print_r($row);
+    print("<hr>");;
 }
 
 $conn->query("DELETE FROM weapon_skins WHERE id = 1");
